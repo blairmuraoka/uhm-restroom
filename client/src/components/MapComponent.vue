@@ -188,7 +188,7 @@ export default {
      * it will calculate the distance to the closest restroom. (and name)
      */
     geolocate() {
-      navigator.geolocation.watchPosition(position => {
+      navigator.geolocation.getCurrentPosition(position => {
         this.panToHelper(position.coords.latitude, position.coords.longitude);
         this.setPlace({
           lat: position.coords.latitude,
