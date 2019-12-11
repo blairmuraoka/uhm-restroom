@@ -1,6 +1,7 @@
+require('dotenv').config()
 module.exports = {
   "devServer": {
-    "public": "http://blairmuraoka.com:8080",
+    "public": process.env.VUE_APP_HOSTNAME,
     "disableHostCheck": true
   },
   "transpileDependencies": [
