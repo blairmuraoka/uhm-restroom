@@ -4,7 +4,6 @@ import App from './App.vue'
 import router from './router'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import vuetify from './plugins/vuetify';
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.config.productionTip = false
 

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    {{description}}
-  </div>
+  <v-container>
+    {{marker.properties.description}} {{marker.properties.floor}}F {{gender}} | Rating: {{rating.toFixed(2)}}
+  </v-container>
 </template>
 
 <script>
@@ -11,7 +11,9 @@ export default {
   name: 'InfoPage',
   data() {
     return {
-      description: ''
+      marker: null,
+      rating: 0,
+      gender: null
     }
   },
   mounted() {
@@ -22,7 +24,22 @@ export default {
       const response = await MapService.getMarker({
         id: this.$route.params.id
       })
-      this.description = response.properties.description
+      this.marker = response
+      this.gender = this.getGender(this.marker.properties.gender)
+      this.rating = this.calculateRating(this.marker.properties.rating)
+    },
+    calculateRating(ratings) {
+      var n = ratings.length
+      return ratings.reduce( (m,n) => m+n )/n
+    },
+    getGender(gender) {
+      if (gender === 'm') {
+        return 'Male'
+      } else if (gender === 'f') {
+        return 'Female'
+      } else {
+        return 'Unisex'
+      }
     }
   }
 }

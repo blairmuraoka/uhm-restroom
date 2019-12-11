@@ -60,7 +60,8 @@
                 <v-card-subtitle class="justify-space-between">
                   {{infoWindow.floor}}F
                   {{infoWindow.gender}}
-                  <v-icon small color="yellow darken-2">star</v-icon> ({{infoWindow.rating.toFixed(1)}})
+                  <span>&nbsp;| Rating: {{infoWindow.rating.toFixed(1)}}</span> 
+                  <v-icon star></v-icon>
                 </v-card-subtitle>
                 <v-card-text>
                   <a :href="'#/restroom/' + infoWindow.id">Restroom Page</a>
@@ -89,7 +90,7 @@
         </div>
       </v-col>
     </v-row>
-    <v-row justify="center" class="footer_item">
+    <v-row justify="center" id="footer_item">
       <span v-if="closestMarker.distance !== null">
         <span
           class="d-flex d-sm-none"
@@ -187,7 +188,7 @@ export default {
      * it will calculate the distance to the closest restroom. (and name)
      */
     geolocate() {
-      navigator.geolocation.getCurrentPosition(position => {
+      navigator.geolocation.watchPosition(position => {
         this.panToHelper(position.coords.latitude, position.coords.longitude);
         this.setPlace({
           lat: position.coords.latitude,
@@ -393,7 +394,7 @@ body {
   }
   #map_wrapper {
     position: relative;
-    height: 90vh;
+    height: 85vh;
     margin: 0 auto;
   }
 }
