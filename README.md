@@ -30,3 +30,17 @@ VUE_APP_GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_APPS_API_KEY
 VUE_APP_API=YOUR_API_LINK
 ```
 
+In server/routes/api/maps.js
+```
+async function loadMapsCollection() {
+	const client = await mongodb.MongoClient.connect
+	('mongodb://localhost:27017', {
+		useUnifiedTopology: true,
+		useNewUrlParser: true
+	});
+
+	return client.db('uhm-restrooms').collection('markers');
+}
+```
+Change the first argument of `mongodb.MongoClient.connect` to the path of your Mongo database.
+Change the `return` line to your appropriate database and collection.
