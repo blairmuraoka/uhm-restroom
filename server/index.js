@@ -10,10 +10,10 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
-app.use(bodyParser.json());
-app.use(cors());
-app.use(helmet());
-app.use(enforce_ssl());
+app.use(bodyParser.json()); // handles request bodies
+app.use(cors());            // enable cors
+app.use(helmet());          // setting http headers
+app.use(enforce_ssl());     // force https on incoming requests
 
 const options = {
     cert: fs.readFileSync(process.env.DB_FULLCHAIN),
