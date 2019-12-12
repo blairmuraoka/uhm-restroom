@@ -29,8 +29,6 @@
             </v-combobox>
           </div>
 
-          <!-- <v-btn class="primary filter_button_grp">Test</v-btn> -->
-
           <!-- Map -->
           <gmap-map ref="mapRef" :center="center" :zoom="18" style="height: 100%">
             <gmap-marker
@@ -42,6 +40,7 @@
               :icon="{ url: require(`../assets/${m.gender}.png`)}"
               @click="panToHelper(m.position.lat, m.position.lng);openInfoWindow(m)"
             ></gmap-marker>
+            <!-- Current Location -->
             <gmap-marker
               :animation="3"
               :position="currentPlace"
@@ -61,7 +60,6 @@
                   {{infoWindow.floor}}F
                   {{infoWindow.gender}}
                   <span>&nbsp;| Rating: {{infoWindow.rating.toFixed(1)}}</span> 
-                  <v-icon star></v-icon>
                 </v-card-subtitle>
                 <v-card-text>
                   <a :href="'#/restroom/' + infoWindow.id">Restroom Page</a>
@@ -82,19 +80,21 @@
                   <v-btn @click="addRating" class="primary" text>Rate it!</v-btn>
                 </v-card-actions>
               </v-card>
-              <!-- End restroom card -->
             </gmap-info-window>
-            <!-- End InfoWindow -->
           </gmap-map>
+          <!-- Geolocate Button -->
           <v-btn @click="geolocate" class="primary geolocate_button" text-color="primary">Geolocate</v-btn>
         </div>
       </v-col>
     </v-row>
+    <!-- Geolocation Data -->
     <v-row justify="center" id="footer_item">
       <span v-if="closestMarker.distance !== null">
+        <!-- All other devices -->
         <span
           class="d-flex d-sm-none"
         >{{ closestMarker.text }} | {{ closestMarker.distance.toFixed(1) }} m</span>
+        <!-- Mobile -->
         <span
           class="d-none d-sm-flex"
         >{{ closestMarker.text }} | {{ closestMarker.distance.toFixed(1) }} m</span>
@@ -336,13 +336,19 @@ export default {
     deg2rad(deg) {
       return deg * (Math.PI / 180);
     },
-    
+    /*
+     * remove(item) : helper function to add a remove key for the chips in filter
+     */
     remove(item) {
       this.filterSelections.gender.splice(
         this.filterSelections.gender.indexOf(item),
         1
       );
     },
+    /*
+     * drawerHandler() : Fixes a bug in Vuetify where the drawer for select items 
+     * would not close when clicked on (the triangle)
+     */
     drawerHandler() {
       const drawer = this.$refs.filterDrawer;
       if (drawer.isMenuActive) {
@@ -394,7 +400,7 @@ body {
   }
   #map_wrapper {
     position: relative;
-    height: 85vh;
+    height: 90vh;
     margin: 0 auto;
   }
 }
