@@ -27,6 +27,9 @@ Link: https://blairmuraoka.com/#/
 **Usage**
 
 MongoDB is not required, but adjustments to code will need to be made, specifically in `server/maps.js`
+
 Usage of this project requires basic knowledge on setting up HTTPS and handling API requests.
+
 Environmental values are optional and can be replaced with your own strings.
+
 A Google Maps API key is required.
