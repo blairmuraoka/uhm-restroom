@@ -2,6 +2,7 @@
 
 Link: https://blairmuraoka.com/#/
 
+**GEOLOCATE INTENDED FOR MOBILE DEVICES. WIRED CONNECTIONS MAY NOT GET AN ACCURATE LOCATION**
 
 **Frameworks and Dependencies**
 
