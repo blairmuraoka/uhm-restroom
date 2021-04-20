@@ -1,6 +1,6 @@
 # UHM Restrooms and Ratings
 
-Link: https://blairmuraoka.com/#/
+Link: ~~https://blairmuraoka.com/#/~~ Website down now
 
 **GEOLOCATE INTENDED FOR MOBILE DEVICES. WIRED CONNECTIONS MAY NOT GET AN ACCURATE LOCATION**
 
